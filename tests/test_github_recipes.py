@@ -1,8 +1,8 @@
 import pytest
 from souschef.jinja_expression import get_global_jinja_var
 
-from grayskull.main import create_python_recipe
-from grayskull.strategy.pypi import adjust_source_url_to_include_placeholders
+from vilmor.main import create_python_recipe
+from vilmor.strategy.pypi import adjust_source_url_to_include_placeholders
 
 
 @pytest.mark.github

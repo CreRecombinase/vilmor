@@ -26,7 +26,7 @@ If applicable, add the output to help explain your problem.
 **Environment:**
  - conda list
  - pip list
- - grayskull --version
+ - vilmor --version
 
 **Additional context**
 Add any other context about the problem here.

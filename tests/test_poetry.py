@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from grayskull.main import generate_recipes_from_list, init_parser
-from grayskull.strategy.py_toml import (
+from vilmor.main import generate_recipes_from_list, init_parser
+from vilmor.strategy.py_toml import (
     InvalidVersion,
     add_poetry_metadata,
     encode_poetry_version,

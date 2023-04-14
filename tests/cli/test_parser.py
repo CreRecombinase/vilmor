@@ -1,6 +1,6 @@
 import pytest
 
-from grayskull.cli.parser import parse_pkg_name_version
+from vilmor.cli.parser import parse_pkg_name_version
 
 
 def test_parse_pkg_name_version():

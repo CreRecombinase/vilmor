@@ -8,13 +8,13 @@ import pytest
 from colorama import Fore, Style
 from souschef.recipe import Recipe
 
-from grayskull.base.factory import GrayskullFactory
-from grayskull.base.pkg_info import normalize_pkg_name
-from grayskull.cli import CLIConfig
-from grayskull.cli.parser import parse_pkg_name_version
-from grayskull.config import Configuration
-from grayskull.main import create_python_recipe
-from grayskull.strategy.py_base import (
+from vilmor.base.factory import GrayskullFactory
+from vilmor.base.pkg_info import normalize_pkg_name
+from vilmor.cli import CLIConfig
+from vilmor.cli.parser import parse_pkg_name_version
+from vilmor.config import Configuration
+from vilmor.main import create_python_recipe
+from vilmor.strategy.py_base import (
     clean_deps_for_conda_forge,
     generic_py_ver_to,
     get_compilers,
@@ -30,7 +30,7 @@ from grayskull.strategy.py_base import (
     py_version_to_selector,
     update_requirements_with_pin,
 )
-from grayskull.strategy.pypi import (
+from vilmor.strategy.pypi import (
     PypiStrategy,
     compose_test_section,
     extract_optional_requirements,
@@ -44,7 +44,7 @@ from grayskull.strategy.pypi import (
     remove_selectors_pkgs_if_needed,
     sort_reqs,
 )
-from grayskull.utils import PyVer, format_dependencies, generate_recipe
+from vilmor.utils import PyVer, format_dependencies, generate_recipe
 
 
 @pytest.fixture
@@ -884,8 +884,8 @@ def test_ipytest_recipe_license():
 
 
 def test_get_test_entry_points():
-    assert get_test_entry_points("grayskull = grayskull.main:main") == [
-        "grayskull --help"
+    assert get_test_entry_points("vilmor = grayskull.main:main") == [
+        "vilmor --help"
     ]
     assert get_test_entry_points(
         ["pytest = py.test:main", "py.test = py.test:main"]
@@ -1219,7 +1219,7 @@ def test_create_recipe_from_local_sdist(pkg_pytest):
     assert recipe["about"]["license_file"] == "LICENSE"
 
 
-@patch("grayskull.strategy.py_base.get_all_toml_info", return_value={})
+@patch("vilmor.strategy.py_base.get_all_toml_info", return_value={})
 def test_400_for_python_selector(monkeypatch):
     recipe = create_python_recipe("pyquil", version="3.0.1")[0]
     assert recipe["build"]["skip"].selector == "py>=400 or py2k"
@@ -1235,7 +1235,7 @@ def test_notice_file():
 
 def test_notice_file_different_licence():
     with patch(
-        "grayskull.license.discovery.get_license_type",
+        "vilmor.license.discovery.get_license_type",
         side_effect=["Apache-2.0", "MIT"],
     ):
         recipe, _ = create_python_recipe(

@@ -1,7 +1,7 @@
 from progressbar import ProgressBar
 
-from grayskull.cli import CLIConfig
-from grayskull.cli.stdout import manage_progressbar, print_msg
+from vilmor.cli import CLIConfig
+from vilmor.cli.stdout import manage_progressbar, print_msg
 
 
 def test_print_stdout(capsys):

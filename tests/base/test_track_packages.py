@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from grayskull.base.track_packages import (
+from vilmor.base.track_packages import (
     ConfigPkg,
     _get_track_info_from_file,
     _version_solver,

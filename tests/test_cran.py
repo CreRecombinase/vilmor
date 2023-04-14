@@ -2,8 +2,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from grayskull.config import Configuration
-from grayskull.strategy.cran import (
+from vilmor.config import Configuration
+from vilmor.strategy.cran import (
     get_cran_metadata,
     scrap_cran_archive_page_for_package_folder_url,
     scrap_cran_pkg_folder_page_for_full_url,
@@ -26,7 +26,7 @@ def webpage_magic_mock():
     return mock_webpage
 
 
-@patch("grayskull.strategy.cran.get_webpage")
+@patch("vilmor.strategy.cran.get_webpage")
 def test_scrap_main_page_cran_find_latest_package(mock_get_webpage, webpage_magic_mock):
     mock_get_webpage.return_value = webpage_magic_mock
     assert scrap_main_page_cran_find_latest_package(
@@ -39,7 +39,7 @@ def test_scrap_main_page_cran_find_latest_package(mock_get_webpage, webpage_magi
     )
 
 
-@patch("grayskull.strategy.cran.get_webpage")
+@patch("vilmor.strategy.cran.get_webpage")
 def test_scrap_main_page_cran_find_latest_package_not_latest(
     mock_get_webpage, webpage_magic_mock
 ):
@@ -49,7 +49,7 @@ def test_scrap_main_page_cran_find_latest_package_not_latest(
     ) == ("pkg_name", "0.1.0", "CRAN_URL/src/contrib/Archive")
 
 
-@patch("grayskull.strategy.cran.get_webpage")
+@patch("vilmor.strategy.cran.get_webpage")
 def test_scrap_cran_archive_page_for_package_folder_url(
     mock_get_webpage, webpage_magic_mock
 ):
@@ -60,7 +60,7 @@ def test_scrap_cran_archive_page_for_package_folder_url(
     )
 
 
-@patch("grayskull.strategy.cran.get_webpage")
+@patch("vilmor.strategy.cran.get_webpage")
 def test_scrap_cran_pkg_folder_page_for_full_url(mock_get_webpage, webpage_magic_mock):
     mock_get_webpage.return_value = webpage_magic_mock
     assert (
@@ -69,10 +69,10 @@ def test_scrap_cran_pkg_folder_page_for_full_url(mock_get_webpage, webpage_magic
     )
 
 
-@patch("grayskull.strategy.cran.get_archive_metadata")
-@patch("grayskull.strategy.cran.sha256_checksum")
-@patch("grayskull.strategy.cran.download_cran_pkg")
-@patch("grayskull.strategy.cran.get_cran_index")
+@patch("vilmor.strategy.cran.get_archive_metadata")
+@patch("vilmor.strategy.cran.sha256_checksum")
+@patch("vilmor.strategy.cran.download_cran_pkg")
+@patch("vilmor.strategy.cran.get_cran_index")
 def test_get_cran_metadata_need_compilation(
     mock_get_cran_index,
     mock_download_cran_pkg,

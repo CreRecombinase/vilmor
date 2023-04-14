@@ -1,4 +1,4 @@
-from grayskull.base.pkg_info import is_pkg_available
+from vilmor.base.pkg_info import is_pkg_available
 
 
 def test_pkg_available():

@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from grayskull.strategy.py_toml import get_all_toml_info
+from vilmor.strategy.py_toml import get_all_toml_info
 
 
 def test_get_all_toml_info():

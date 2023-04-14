@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from grayskull.config import Configuration
-from grayskull.main import create_python_recipe
-from grayskull.strategy.py_base import (
+from vilmor.config import Configuration
+from vilmor.main import create_python_recipe
+from vilmor.strategy.py_base import (
     clean_deps_for_conda_forge,
     ensure_pep440,
     generic_py_ver_to,
@@ -10,7 +10,7 @@ from grayskull.strategy.py_base import (
     merge_deps_toml_setup,
     update_requirements_with_pin,
 )
-from grayskull.utils import PyVer
+from vilmor.utils import PyVer
 
 
 def test_ensure_pep440():

@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from grayskull.utils import (
+from vilmor.utils import (
     format_dependencies,
     get_all_modules_imported_script,
     get_std_modules,

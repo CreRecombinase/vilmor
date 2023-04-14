@@ -4,7 +4,7 @@ import shutil
 import pytest
 from pytest import fixture
 
-from grayskull.strategy.py_base import download_sdist_pkg
+from vilmor.strategy.py_base import download_sdist_pkg
 
 
 @fixture(scope="session")

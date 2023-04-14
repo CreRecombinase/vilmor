@@ -4,16 +4,16 @@ from copy import deepcopy
 import pytest
 from souschef.recipe import Recipe
 
-import grayskull
-from grayskull import main as cli
-from grayskull.base.factory import GrayskullFactory
-from grayskull.config import Configuration
+import vilmor
+from vilmor import main as cli
+from vilmor.base.factory import GrayskullFactory
+from vilmor.config import Configuration
 
 
 def test_version(capsys):
     cli.main(["--version"])
     captured = capsys.readouterr()
-    assert captured.out.strip() == grayskull.__version__
+    assert captured.out.strip() == vilmor.__version__
 
 
 def test_pypi_cmd(tmpdir):
@@ -37,7 +37,7 @@ def test_easter(capsys, option):
     assert "By the power of Grayskull..." in captured.out.strip()
 
 
-def test_grayskull_without_options(capsys, monkeypatch):
+def test_vilmor_without_options(capsys, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["foo"])
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         cli.main([])
@@ -64,11 +64,11 @@ def test_license_discovery(tmpdir):
 
 
 def test_change_pypi_url(mocker):
-    mocker.patch("grayskull.main.generate_recipe", return_value=None)
+    mocker.patch("vilmor.main.generate_recipe", return_value=None)
     mocker.patch(
-        "grayskull.main.create_python_recipe", return_value=({"extra": {}}, None)
+        "vilmor.main.create_python_recipe", return_value=({"extra": {}}, None)
     )
-    mocker.patch("grayskull.main.add_extra_section", return_value=None)
+    mocker.patch("vilmor.main.add_extra_section", return_value=None)
     spy = mocker.spy(cli, "create_python_recipe")
 
     cli.main(["pypi", "pytest=5.3.2", "--pypi-url=http://url_pypi.com/abc"])
@@ -101,7 +101,7 @@ def test_recursive_option(mocker, option, tmpdir):
     def mock_is_pkg_available(pkg):
         return pkg != "colorama"
 
-    mocker.patch("grayskull.cli.stdout.is_pkg_available", new=mock_is_pkg_available)
+    mocker.patch("vilmor.cli.stdout.is_pkg_available", new=mock_is_pkg_available)
     spy = mocker.spy(cli, "generate_recipes_from_list")
     cli.main(["pypi", "pytest=5.3.2", option, "-o", str(folder)])
     assert spy.call_count == 2

@@ -3,7 +3,7 @@ Command Line
 
 ```{eval-rst}
 .. argparse::
-   :module: grayskull.main
+   :module: vilmor.main
    :func: init_parser
-   :prog: grayskull
+   :prog: vilmor
 ```

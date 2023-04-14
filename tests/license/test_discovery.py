@@ -6,7 +6,7 @@ import pytest
 import requests
 from pytest import fixture
 
-from grayskull.license.discovery import (
+from vilmor.license.discovery import (
     _get_all_license_choice,
     _get_all_names_from_api,
     _get_api_github_url,
